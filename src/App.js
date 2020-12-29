@@ -3,25 +3,24 @@ import Header from "./components/layout/Header";
 import './App.css';
 import ToDos from "./components/ToDos";
 import AddToDo from "./components/AddToDo";
-import { findAllByDisplayValue } from '@testing-library/react';
-
+import {v4 as uuid} from "uuid";
 
 
 class App extends Component {
   state = {
     todos: [
       {
-        id: 1,
+        id: uuid(),
         title: 'Take out trash',
         completed: false
       },
       {
-        id: 2,
+        id: uuid(),
         title: 'Dinner with Wife',
         completed: true
       },
       {
-        id: 3,
+        id: uuid(),
         title: 'Meeting with Boss',
         completed: false
       }  
@@ -44,7 +43,7 @@ class App extends Component {
   
   addToDo = (title) => {
     const newToDo = {
-      id: 4,
+      id: uuid(),
       title,
       completed: false
     }
