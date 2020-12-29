@@ -3,6 +3,7 @@ import Header from "./components/layout/Header";
 import './App.css';
 import ToDos from "./components/ToDos";
 import AddToDo from "./components/AddToDo";
+import { findAllByDisplayValue } from '@testing-library/react';
 
 
 
@@ -41,13 +42,21 @@ class App extends Component {
     this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)]});
   }
   
+  addToDo = (title) => {
+    const newToDo = {
+      id: 4,
+      title,
+      completed: false
+    }
+    this.setState({ todos: [...this.state.todos, newToDo] });
+  }
 
   render() {
     return(
       <div className="App">
         <div className="container">
           <Header />
-          <AddToDo />
+          <AddToDo addToDo={this.addToDo} />
           <ToDos todos={this.state.todos} 
           markComplete={this.markComplete}
           delTodo={this.delTodo} />
